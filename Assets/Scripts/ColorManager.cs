@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class ColorManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private Renderer _renderer;
 
-    // Update is called once per frame
-    void Update()
+    public Color SelectedColor { get; private set; }
+
+    public void SetSelectedColor(Color color)
     {
-        
+        SelectedColor = color;
+        if(_renderer != null) _renderer.material.color = SelectedColor;
     }
 }

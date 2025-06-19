@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class ColorPicker : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private Material _material;
+    private ColorManager _colorManager;
+
     void Start()
     {
-        
+        _material = GetComponent<MeshRenderer>().material;
+        _colorManager = FindAnyObjectByType<ColorManager>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnMouseDown()
     {
-        
+        _colorManager.SetSelectedColor(_material.color);
     }
 }
