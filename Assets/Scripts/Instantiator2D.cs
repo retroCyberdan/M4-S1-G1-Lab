@@ -7,7 +7,6 @@ using static UnityEngine.Rendering.DebugUI.Table;
 public class Instantiator2D : MonoBehaviour
 {
     [SerializeField] GameObject _quadPrefab;
-    //[SerializeField] Transform _parentTransform;
     [SerializeField] int _columns = 5;
     [SerializeField] int _rows = 5;
     [SerializeField] float _offsetColumns = 1.1f;
@@ -15,12 +14,11 @@ public class Instantiator2D : MonoBehaviour
 
     void Start()
     {
-        InstantiateGrid();
+        CreateGrid();
     }
 
-    private void InstantiateGrid()
+    private void CreateGrid()
     {
-        //Vector2 startPos = new Vector2(-(_columns - 1) * _offsetColumns / 2f, -(_rows - 1) * _offsetRows / 2f);
         float x = transform.position.x;
         float y = transform.position.y;
         Vector3 startPos = new Vector3(x, y, 0);
@@ -31,7 +29,6 @@ public class Instantiator2D : MonoBehaviour
             {
                 Vector3 position = new Vector3(startPos.x + j * _offsetColumns, startPos.y + i * _offsetRows, 0f);
                 Instantiate(_quadPrefab, position, Quaternion.identity, transform);
-                //ColorManager.Color.RegisterQuad(quad);
             }
         }
     }
